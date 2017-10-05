@@ -1,5 +1,18 @@
 use std;
 
+#[allow(dead_code)]
+pub const NORTH: f64 = (3.0 * (std::f64::consts::PI / 2.0));
+#[allow(dead_code)]
+pub const EAST:  f64 = 0.0;
+#[allow(dead_code)]
+pub const SOUTH: f64 = (std::f64::consts::PI / 2.0);
+#[allow(dead_code)]
+pub const WEST:  f64 = std::f64::consts::PI;
+
+#[allow(dead_code)]
+pub const DEFAULT_SPIN: f64 = (std::f64::consts::PI / 2.0);
+
+
 #[derive(Clone, Copy)]
 pub struct TurtleMovement {
     pub x_from: f64,
@@ -41,15 +54,15 @@ pub struct Turtle {
 
 impl Turtle {
 
-    pub fn new(x: f64, y: f64) -> Turtle {
+    pub fn new(x: f64, y: f64, facing: f64) -> Turtle {
         Turtle {
             stack: Vec::new(),
             state: TurtleState {
                 x: x,
                 y: y,
-                rot: (std::f64::consts::PI / 2.0),
+                rot: facing,
                 step: 5.0,
-                spin: (std::f64::consts::PI / 2.0),
+                spin: DEFAULT_SPIN,
                 draw: true
             }
         }
